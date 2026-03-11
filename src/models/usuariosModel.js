@@ -19,7 +19,7 @@ export async function criarUsuario({nome, email, senha_hash}) {
 
 }
 export async function buscarUsuarioPorEmail(email) {
-    const [resultados] = await conexao.query("SELECT id, nome, email, criado_em FROM usuarios WHERE email = ?",
+    const [resultados] = await conexao.query("SELECT id, nome, email,senha_hash, criado_em FROM usuarios WHERE email = ?",
         [email]);
     return resultados[0];
 }

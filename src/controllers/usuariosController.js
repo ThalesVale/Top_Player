@@ -38,12 +38,12 @@ export async function login(req, res) {
 
     const usuario = await usuarioModel.buscarUsuarioPorEmail(email);
     const senha_hash = crypto.createHash("sha256").update(senha).digest("hex");
-    if(!usuario ){
+    if(!usuario ){""
         return res.status(400).json({ error: "Credenciais inválidas" });}
 
     if (senha_hash !== usuario.senha_hash){
         return res.status(400).json({ error: "Credenciais inválidas" });
-    }
+    }""
 
     const token = crypto.randomBytes(24).toString("hex");
 
@@ -51,7 +51,7 @@ export async function login(req, res) {
         usuario: {
             id: usuario.id,
             nome: usuario.nome,
-            email: usuario.email
+            email: usuario.email,
         }
      });
 
